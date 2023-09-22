@@ -44,6 +44,10 @@ jobs:
         run: pnpm test
       - name: "Build"
         run: pnpm run build
+        if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
+      - name: "Build (with Base Path)"
+        run: pnpm run build --base=${{ github.event.repository.name }}
+        if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
       - name: "Cloudflare Config"
         if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
         run: cp ./.cloudflare/* ./dist/
@@ -56,6 +60,9 @@ jobs:
           projectName: ${{ steps.dotenv.outputs.cloudflare_projectname }}
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+        if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
         if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
