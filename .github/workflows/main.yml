@@ -1,0 +1,61 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Continuous Deployment
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: "Checkout Repository"
+        uses: actions/checkout@v3
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "current"
+          cache: "pnpm"
+      - id: dotenv
+        uses: falti/dotenv-action@v1.0.4
+      - name: "Install"
+        run: pnpm install
+      - name: "Test"
+        run: pnpm test
+      - name: "Build"
+        run: pnpm run build
+      - name: "Cloudflare Config"
+        if: !!steps.dotenv.outputs.cloudflare_projectname
+        run: cp ./.cloudflare/* ./dist/
+      - name: Publish (Cloudflare)
+        uses: cloudflare/pages-action@1
+        if: !!steps.dotenv.outputs.cloudflare_projectname
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ steps.dotenv.outputs.cloudflare_projectname }}
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+        if: !steps.dotenv.outputs.cloudflare_projectname
+        with:
+          path: dist
+      - name: Publish (Github Pages)
+        uses: actions/deploy-pages@v2
+        if: !steps.dotenv.outputs.cloudflare_projectname
+        id: deployment
