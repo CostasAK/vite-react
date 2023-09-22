@@ -39,11 +39,11 @@ jobs:
       - name: "Build"
         run: pnpm run build
       - name: "Cloudflare Config"
-        if: !!steps.dotenv.outputs.cloudflare_projectname
+        if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
         run: cp ./.cloudflare/* ./dist/
       - name: Publish (Cloudflare)
         uses: cloudflare/pages-action@1
-        if: !!steps.dotenv.outputs.cloudflare_projectname
+        if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -52,10 +52,10 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
-        if: !steps.dotenv.outputs.cloudflare_projectname
+        if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
         with:
           path: dist
       - name: Publish (Github Pages)
         uses: actions/deploy-pages@v2
-        if: !steps.dotenv.outputs.cloudflare_projectname
+        if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
         id: deployment
