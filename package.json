@@ -6,17 +6,13 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "test": "return 0",
     "preview": "vite preview",
+    "test": "return 0",
     "clean": "npx rimraf dist node_modules",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --ignore-unknown --check .",
     "prepare": "husky install",
-    "commit": "git-cz",
-    "postbuild": "react-snap"
-  },
-  "reactSnap": {
-    "source": "dist"
+    "commit": "git-cz"
   },
   "config": {
     "commitizen": {
