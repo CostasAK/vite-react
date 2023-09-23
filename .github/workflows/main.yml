@@ -22,7 +22,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: "Checkout Repository"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: pnpm-setup
         uses: pnpm/action-setup@v2
         with:
@@ -38,12 +38,12 @@ jobs:
           path: env/.env
       - name: "Install"
         run: pnpm install
-      - name: "Test"
-        run: pnpm test
       - name: "Format Check"
         run: pnpm run format
       - name: "Lint Check"
         run: pnpm run lint
+      - name: "Test"
+        run: pnpm test
       - name: "Build"
         run: pnpm run build
         if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
