@@ -22,4 +22,4 @@ jobs:
       - name: "List parent"
         run: ls ..
       - name: "github-label-sync"
-        run: npx github-label-sync --access-token ${{ secrets.GITHUB_TOKEN }} $GITHUB_REPOSITORY
+        run: npx github-label-sync --access-token ${{ secrets.GITHUB_TOKEN }} --labels labels.json $GITHUB_REPOSITORY

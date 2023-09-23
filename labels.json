@@ -106,7 +106,8 @@
   {
     "name": "type: documentation",
     "color": "207de5",
-    "aliases": ["type::documentation", "documentation"]
+    "aliases": ["type::documentation", "documentation"],
+    "description": "Improvements or additions to documentation"
   },
   {
     "name": "type: design",
@@ -116,7 +117,8 @@
   {
     "name": "type: enhancement",
     "color": "009800",
-    "aliases": ["type::enhancement", "enhancement", "feature"]
+    "aliases": ["type::enhancement", "enhancement", "feature"],
+    "description": "New feature or request"
   },
   {
     "name": "type: epic",
