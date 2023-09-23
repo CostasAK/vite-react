@@ -1,4 +1,4 @@
-name: Continuous Deployment
+name: Github Labels
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    name: Continuous Deployment
+    name: Github Label Sync
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -16,4 +16,4 @@ jobs:
       pull-requests: write
     steps:
       - name: "github-label-sync"
-        run: github-label-sync --access-token ${{ secrets.GITHUB_TOKEN }} $GITHUB_REPOSITORY
+        run: npx github-label-sync --access-token ${{ secrets.GITHUB_TOKEN }} $GITHUB_REPOSITORY
