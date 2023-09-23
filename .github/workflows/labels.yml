@@ -3,7 +3,9 @@ name: Github Labels
 on:
   push:
     branches: [main]
-    paths: "labels.json"
+    paths:
+      - "labels.json"
+      - ".github/workflows/labels.yml"
   workflow_dispatch:
 
 jobs:
