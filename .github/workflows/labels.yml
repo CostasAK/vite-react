@@ -1,0 +1,19 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches: [main]
+    paths: "labels.json"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Continuous Deployment
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - name: "github-label-sync"
+        run: github-label-sync --access-token ${{ secrets.GITHUB_TOKEN }} $GITHUB_REPOSITORY

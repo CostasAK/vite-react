@@ -19,8 +19,7 @@ updates:
           - "minor"
           - "patch"
     labels:
-      - "priority::low"
-      - "status::to do"
-      - "type::dependencies"
+      - "priority: low"
+      - "type: dependencies"
     reviewers:
       - "CostasAK"
