@@ -18,8 +18,8 @@ jobs:
       pull-requests: write
     steps:
       - name: "List wd"
-        run: ls
+        run: echo $(ls)
       - name: "List parent"
-        run: ls ..
+        run: echo $(ls ..)
       - name: "github-label-sync"
         run: npx github-label-sync --access-token ${{ secrets.GITHUB_TOKEN }} --labels labels.json $GITHUB_REPOSITORY
