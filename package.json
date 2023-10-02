@@ -11,6 +11,7 @@
     "clean": "npx rimraf dist node_modules",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --ignore-unknown --check .",
+    "format-write": "prettier --ignore-unknown --write .",
     "prepare": "husky install",
     "commit": "git-cz"
   },

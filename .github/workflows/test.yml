@@ -3,12 +3,36 @@ name: Continuous Integration
 on:
   pull_request:
     branches: [main]
-  schedule:
-    - cron: "0 6 * * *"
   workflow_dispatch:
 
 jobs:
-  deploy:
+  format:
+    name: Code Formatting
+    if: ${{ github.triggering_actor == 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: "Checkout Repository"
+        uses: actions/checkout@v4
+      - name: pnpm-setup
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "current"
+          cache: "pnpm"
+      - name: "Install"
+        run: pnpm install
+      - name: "Format Write"
+        run: pnpm run format-write
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "style(format): write prettier formatting"
+  test:
     name: Continuous Integration
     runs-on: ubuntu-latest
     permissions:
