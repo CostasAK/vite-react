@@ -33,6 +33,7 @@ jobs:
         with:
           commit_message: "style(format): write prettier formatting"
   dependabot:
+    needs: format
     name: Dependabot Auto-Merge
     if: ${{ github.actor == 'dependabot[bot]' }}
     runs-on: ubuntu-latest
@@ -57,6 +58,7 @@ jobs:
           PR_URL: ${{github.event.pull_request.html_url}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
   test:
+    needs: format
     name: Continuous Integration
     runs-on: ubuntu-latest
     permissions:
