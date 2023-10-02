@@ -2,7 +2,7 @@ name: Continuous Integration
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, edited, unlocked]
+    types: [opened, synchronize, reopened, unlocked]
   workflow_dispatch:
 
 jobs:

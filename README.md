@@ -9,9 +9,12 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 ### Preventing merging pull requests with failing build
 
-1. _Settings_ -> _Branches_ -> _Branch Protection Rule_
-   1. _Branch name pattern_: `main`
-   2. _Protect matching branches_
-      1. _Require a pull request before merging_
-      2. _Require approvals_
-      3. _Require status checks to pass before merging_ -> _Require branches to be up to date before merging_: `Continuous Integration`
+1. _Settings_
+   1. _General_ -> _Pull Requests_ -> _Allow auto-merge_
+   2. _Branches_ -> _Branch Protection Rule_
+      1. _Branch name pattern_: `main`
+      2. _Protect matching branches_
+         1. _Require a pull request before merging_
+         2. _Require approvals_
+         3. _Require status checks to pass before merging_ -> _Require branches to be up to date before merging_: `Continuous Integration`
+   3. _Actions_ -> _General_ -> _Workflow permissions_ -> _Allow GitHub Actions to create and approve pull requests_
