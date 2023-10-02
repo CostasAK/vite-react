@@ -48,7 +48,7 @@ jobs:
         run: pnpm run build
         if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
       - name: "Build (with Base Path)"
-        run: pnpm run build --base=${{ github.event.repository.name }}
+        run: pnpm run build --base=/${{ github.event.repository.name }}
         if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
       - name: "Cloudflare Config"
         if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
