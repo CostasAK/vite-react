@@ -8,7 +8,6 @@ on:
 
 jobs:
   env:
-    name: Continuous Deployment
     runs-on: ubuntu-latest
     permissions:
       contents: read

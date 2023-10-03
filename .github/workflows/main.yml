@@ -12,7 +12,6 @@ jobs:
     uses: ./.github/workflows/test.yml
   env:
     needs: test
-    name: Continuous Deployment
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -31,8 +30,16 @@ jobs:
   cloudflare:
     needs: [test, env]
     if: ${{!!needs.env.outputs.cloudflare}}
+    permissions:
+      contents: read
+      deployments: write
     uses: ./.github/workflows/cloudflare.yml
   gh-pages:
     needs: [test, env]
     if: ${{!needs.env.outputs.cloudflare}}
+    permissions:
+      contents: read
+      deployments: write
+      pages: write
+      id-token: write
     uses: ./.github/workflows/gh-pages.yml
