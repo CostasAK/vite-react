@@ -25,22 +25,18 @@ jobs:
         uses: falti/dotenv-action@v1
         with:
           path: env/.env
-      - run: echo "${{toJson(steps.dotenv.outputs)}}"
-      - run: echo "${{steps.dotenv.outputs.cloudflare_projectname}}"
-      - run: echo "${{steps.dotenv.outputs.cloudflare_projectname != ''}}"
-      - run: echo "${{steps.dotenv.outputs.cloudflare_projectname == ''}}"
     outputs:
-      cloudflare: steps.dotenv.outputs.cloudflare_projectname != ''
+      cloudflare_projectname: steps.dotenv.outputs.cloudflare_projectname
   cloudflare:
     needs: [test, env]
-    if: needs.env.outputs.cloudflare
+    if: needs.env.outputs.cloudflare_projectname != ''
     permissions:
       contents: read
       deployments: write
     uses: ./.github/workflows/cloudflare.yml
   gh-pages:
     needs: [test, env]
-    if: (!needs.env.outputs.cloudflare)
+    if: needs.env.outputs.cloudflare_projectname == ''
     permissions:
       contents: read
       deployments: write
