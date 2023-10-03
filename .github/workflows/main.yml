@@ -13,64 +13,22 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      deployments: write
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
-      - name: pnpm-setup
-        uses: pnpm/action-setup@v2
         with:
-          version: 8
-      - name: "Setup Node.js"
-        uses: actions/setup-node@v3
-        with:
-          node-version: "current"
-          cache: "pnpm"
+          sparse-checkout: |
+            env/.env
+          sparse-checkout-cone-mode: false
       - id: dotenv
         uses: falti/dotenv-action@v1
         with:
           path: env/.env
-      - name: "Install"
-        run: pnpm install
-      - name: "Format Check"
-        run: pnpm run format
-      - name: "Lint Check"
-        run: pnpm run lint
-      - name: "Test"
-        run: pnpm test
-      - name: "Build"
-        run: pnpm run build
+      - name: Run Tests
+        uses: ./.github/workflows/test.yml
+      - name: Deploy to Cloudflare
         if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
-      - name: "Build (with Base Path)"
-        run: pnpm run build --base=/${{ github.event.repository.name }}
+        uses: ./.github/workflows/cloudflare.yml
+      - name: Deploy to Github Pages
         if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
-      - name: "Cloudflare Config"
-        if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
-        run: cp ./.cloudflare/* ./dist/
-      - name: Publish (Cloudflare)
-        uses: cloudflare/pages-action@1
-        if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ steps.dotenv.outputs.cloudflare_projectname }}
-          directory: dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-        if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v2
-        if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
-        with:
-          path: dist
-      - name: Publish (Github Pages)
-        uses: actions/deploy-pages@v2
-        if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
-        id: deployment
+        uses: ./.github/workflows/gh-pages.yml

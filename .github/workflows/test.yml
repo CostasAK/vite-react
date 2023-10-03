@@ -1,67 +1,17 @@
 name: Continuous Integration
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, unlocked]
+  pull_request_target:
+    branches:
+      - main
   workflow_dispatch:
+  workflow_call:
 
 jobs:
-  format:
-    name: Code Formatting
-    if: ${{ github.triggering_actor == 'dependabot[bot]' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout Repository"
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.APPROVAL_TOKEN }}
-      - name: pnpm-setup
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: "Setup Node.js"
-        uses: actions/setup-node@v3
-        with:
-          node-version: "current"
-          cache: "pnpm"
-      - name: "Install"
-        run: pnpm install
-      - name: "Format Write"
-        run: pnpm run format-write
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "style(format): write prettier formatting"
-  dependabot:
-    name: Dependabot Auto-Merge
-    if: ${{ github.actor == 'dependabot[bot]' }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: read
-    steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Enable auto-merge for Dependabot PRs
-        run: gh pr merge --auto --merge "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.APPROVAL_TOKEN}}
-      - name: Approve patch and minor updates
-        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor'}}
-        run: gh pr review $PR_URL --approve -b "I'm **approving** this pull request because **it includes a patch or minor update**"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.APPROVAL_TOKEN}}
   test:
-    name: Continuous Integration
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      deployments: write
     steps:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
@@ -74,10 +24,6 @@ jobs:
         with:
           node-version: "current"
           cache: "pnpm"
-      - id: dotenv
-        uses: falti/dotenv-action@v1
-        with:
-          path: env/.env
       - name: "Install"
         run: pnpm install
       - name: "Format Check"
@@ -86,18 +32,3 @@ jobs:
         run: pnpm run lint
       - name: "Test"
         run: pnpm test
-      - name: "Build"
-        run: pnpm run build
-        if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
-      - name: "Cloudflare Config"
-        if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
-        run: cp ./.cloudflare/* ./dist/
-      - name: Publish (Cloudflare)
-        uses: cloudflare/pages-action@1
-        if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ steps.dotenv.outputs.cloudflare_projectname }}
-          directory: dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
