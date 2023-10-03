@@ -44,7 +44,7 @@
     "imagemin-lint-staged": "^0.5.1",
     "inquirer": "8",
     "lint-staged": "^14.0.1",
-    "vite": "^4.4.9",
+    "vite": "^4.4.10",
     "vite-plugin-svgr": "^4.1.0"
   }
 }
