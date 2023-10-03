@@ -25,7 +25,7 @@ jobs:
         uses: falti/dotenv-action@v1
         with:
           path: env/.env
-      - run: echo "${{steps.dotenv.outputs}}"
+      - run: echo "${{toJson(steps.dotenv.outputs)}}"
     outputs:
       cloudflare: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
   cloudflare:
