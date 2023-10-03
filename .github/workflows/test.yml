@@ -10,11 +10,11 @@ jobs:
     name: Code Formatting
     if: ${{ github.triggering_actor == 'dependabot[bot]' }}
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.APPROVAL_TOKEN }}
       - name: pnpm-setup
         uses: pnpm/action-setup@v2
         with:
@@ -33,7 +33,6 @@ jobs:
         with:
           commit_message: "style(format): write prettier formatting"
   dependabot:
-    needs: format
     name: Dependabot Auto-Merge
     if: ${{ github.actor == 'dependabot[bot]' }}
     runs-on: ubuntu-latest
@@ -50,15 +49,14 @@ jobs:
         run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.APPROVAL_TOKEN}}
+          GH_TOKEN: ${{secrets.APPROVAL_TOKEN}}
       - name: Approve patch and minor updates
         if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor'}}
         run: gh pr review $PR_URL --approve -b "I'm **approving** this pull request because **it includes a patch or minor update**"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.APPROVAL_TOKEN}}
+          GH_TOKEN: ${{secrets.APPROVAL_TOKEN}}
   test:
-    needs: format
     name: Continuous Integration
     runs-on: ubuntu-latest
     permissions:
