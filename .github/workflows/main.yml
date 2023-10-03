@@ -8,7 +8,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  test:
+    uses: ./.github/workflows/test.yml
+  env:
+    needs: test
     name: Continuous Deployment
     runs-on: ubuntu-latest
     permissions:
@@ -18,17 +21,18 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            .github
             env
       - id: dotenv
         uses: falti/dotenv-action@v1
         with:
           path: env/.env
-      - name: Run Tests
-        uses: ./.github/workflows/test.yml
-      - name: Deploy to Cloudflare
-        if: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
-        uses: ./.github/workflows/cloudflare.yml
-      - name: Deploy to Github Pages
-        if: ${{!steps.dotenv.outputs.cloudflare_projectname}}
-        uses: ./.github/workflows/gh-pages.yml
+    outputs:
+      cloudflare: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
+  cloudflare:
+    needs: [test, env]
+    if: ${{!!needs.env.outputs.cloudflare}}
+    uses: ./.github/workflows/cloudflare.yml
+  gh-pages:
+    needs: [test, env]
+    if: ${{!needs.env.outputs.cloudflare}}
+    uses: ./.github/workflows/gh-pages.yml
