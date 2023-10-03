@@ -22,7 +22,7 @@ jobs:
         with:
           path: env/.env
     outputs:
-      cloudflare_projectname: steps.dotenv.outputs.cloudflare_projectname
+      cloudflare_projectname: ${{steps.dotenv.outputs.cloudflare_projectname || ''}}
   deploy:
     needs: env
     if: needs.env.outputs.cloudflare_projectname != ''
