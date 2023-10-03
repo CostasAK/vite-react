@@ -29,7 +29,7 @@ jobs:
       - run: echo "${{toJson(steps.dotenv.outputs.cloudflare_projectname)}}"
       - run: echo "${{steps.dotenv.outputs.cloudflare_projectname}}"
     outputs:
-      cloudflare: ${{!!steps.dotenv.outputs.cloudflare_projectname}}
+      cloudflare: ${{steps.dotenv.outputs.cloudflare_projectname != ''}}
   cloudflare:
     needs: [test, env]
     if: ${{!!needs.env.outputs.cloudflare}}
