@@ -26,8 +26,9 @@ jobs:
         with:
           path: env/.env
       - run: echo "${{toJson(steps.dotenv.outputs)}}"
-      - run: echo "${{toJson(steps.dotenv.outputs.cloudflare_projectname)}}"
       - run: echo "${{steps.dotenv.outputs.cloudflare_projectname}}"
+      - run: echo "${{steps.dotenv.outputs.cloudflare_projectname != ''}}"
+      - run: echo "${{steps.dotenv.outputs.cloudflare_projectname == ''}}"
     outputs:
       cloudflare: ${{steps.dotenv.outputs.cloudflare_projectname != ''}}
   cloudflare:
