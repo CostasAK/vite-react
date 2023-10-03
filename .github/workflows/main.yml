@@ -30,17 +30,17 @@ jobs:
       - run: echo "${{steps.dotenv.outputs.cloudflare_projectname != ''}}"
       - run: echo "${{steps.dotenv.outputs.cloudflare_projectname == ''}}"
     outputs:
-      cloudflare: ${{steps.dotenv.outputs.cloudflare_projectname != ''}}
+      cloudflare: steps.dotenv.outputs.cloudflare_projectname != ''
   cloudflare:
     needs: [test, env]
-    if: ${{!!needs.env.outputs.cloudflare}}
+    if: needs.env.outputs.cloudflare
     permissions:
       contents: read
       deployments: write
     uses: ./.github/workflows/cloudflare.yml
   gh-pages:
     needs: [test, env]
-    if: ${{!needs.env.outputs.cloudflare}}
+    if: (!needs.env.outputs.cloudflare)
     permissions:
       contents: read
       deployments: write
