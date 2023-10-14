@@ -10,6 +10,8 @@ env:
   PR_URL: ${{github.event.pull_request.html_url}}
 
 jobs:
+  test:
+    uses: ./.github/workflows/test.yml
   format:
     name: Code Formatting
     if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && github.triggering_actor == 'dependabot[bot]' }}
@@ -36,8 +38,21 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "style(format): write prettier formatting"
-  dependabot:
+  automerge:
     name: Dependabot Auto-Merge
+    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && (github.actor == 'dependabot[bot]' || github.actor == 'CostasAK') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Enable auto-merge for Dependabot PRs
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  approve:
+    needs: [test]
+    name: Dependabot Auto-Approve
     if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && (github.actor == 'dependabot[bot]' || github.actor == 'CostasAK') }}
     runs-on: ubuntu-latest
     permissions:
@@ -49,10 +64,6 @@ jobs:
         uses: dependabot/fetch-metadata@v1
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Enable auto-merge for Dependabot PRs
-        run: gh pr merge --auto --merge "$PR_URL"
-        env:
-          GH_TOKEN: ${{secrets.APPROVAL_TOKEN}}
       - name: Approve patch and minor updates
         if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor'}}
         run: gh pr review $PR_URL --approve -b "I'm **approving** this pull request because **it includes a patch or minor update**"
