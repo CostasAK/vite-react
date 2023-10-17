@@ -43,7 +43,7 @@
     "husky": "^8.0.3",
     "imagemin-lint-staged": "^0.5.1",
     "inquirer": "8",
-    "lint-staged": "^14.0.1",
+    "lint-staged": "^15.0.1",
     "vite": "^4.4.11",
     "vite-plugin-svgr": "^4.1.0"
   }
