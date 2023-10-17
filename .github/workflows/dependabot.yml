@@ -42,14 +42,11 @@ jobs:
     name: Dependabot Auto-Merge
     if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && (github.actor == 'dependabot[bot]' || github.actor == 'CostasAK') }}
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
     steps:
       - name: Enable auto-merge for Dependabot PRs
         run: gh pr merge --auto --merge "$PR_URL"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.APPROVAL_TOKEN }}
   approve:
     needs: [test]
     name: Dependabot Auto-Approve
