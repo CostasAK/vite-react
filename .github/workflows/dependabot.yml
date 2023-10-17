@@ -43,7 +43,7 @@ jobs:
     if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && (github.actor == 'dependabot[bot]' || github.actor == 'CostasAK') }}
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
     steps:
       - name: Enable auto-merge for Dependabot PRs
