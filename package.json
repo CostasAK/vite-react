@@ -32,7 +32,7 @@
     "@commitlint/cli": "^17.8.0",
     "@commitlint/config-conventional": "^17.8.0",
     "@commitlint/cz-commitlint": "^17.8.0",
-    "@types/react": "^18.2.29",
+    "@types/react": "^18.2.30",
     "@types/react-dom": "^18.2.14",
     "@vitejs/plugin-react": "^4.1.0",
     "commitizen": "^4.3.0",
@@ -43,7 +43,7 @@
     "husky": "^8.0.3",
     "imagemin-lint-staged": "^0.5.1",
     "inquirer": "8",
-    "lint-staged": "^15.0.1",
+    "lint-staged": "^15.0.2",
     "vite": "^4.5.0",
     "vite-plugin-svgr": "^4.1.0"
   }
