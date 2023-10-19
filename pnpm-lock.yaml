@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^17.8.0
     version: 17.8.0(commitizen@4.3.0)(inquirer@8.2.6)
   "@types/react":
-    specifier: ^18.2.29
-    version: 18.2.29
+    specifier: ^18.2.30
+    version: 18.2.30
   "@types/react-dom":
     specifier: ^18.2.14
     version: 18.2.14
@@ -68,8 +68,8 @@ devDependencies:
     specifier: "8"
     version: 8.2.6
   lint-staged:
-    specifier: ^15.0.1
-    version: 15.0.1
+    specifier: ^15.0.2
+    version: 15.0.2
   vite:
     specifier: ^4.5.0
     version: 4.5.0(@types/node@20.5.1)
@@ -1394,17 +1394,17 @@ packages:
         integrity: sha512-V835xgdSVmyQmI1KLV2BEIUgqEuinxp9O4G6g3FqO/SqLac049E53aysv0oEFD2kHfejeKU+ZqL2bcFWj9gLAQ==,
       }
     dependencies:
-      "@types/react": 18.2.29
+      "@types/react": 18.2.30
     dev: true
 
-  /@types/react@18.2.29:
+  /@types/react@18.2.30:
     resolution:
       {
-        integrity: sha512-Z+ZrIRocWtdD70j45izShRwDuiB4JZqDegqMFW/I8aG5DxxLKOzVNoq62UIO82v9bdgi+DO1jvsb9sTEZUSm+Q==,
+        integrity: sha512-OfqdJnDsSo4UNw0bqAjFCuBpLYQM7wvZidz0hVxHRjrEkzRlvZL1pJVyOSY55HMiKvRNEo9DUBRuEl7FNlJ/Vg==,
       }
     dependencies:
       "@types/prop-types": 15.7.9
-      "@types/scheduler": 0.16.4
+      "@types/scheduler": 0.16.5
       csstype: 3.1.2
     dev: true
 
@@ -1417,10 +1417,10 @@ packages:
       "@types/node": 20.8.6
     dev: true
 
-  /@types/scheduler@0.16.4:
+  /@types/scheduler@0.16.5:
     resolution:
       {
-        integrity: sha512-2L9ifAGl7wmXwP4v3pN4p2FLhD0O1qsJpvKmNin5VA8+UvNVb447UDaAEV6UdrkA+m/Xs58U1RFps44x6TFsVQ==,
+        integrity: sha512-s/FPdYRmZR8SjLWGMCuax7r3qCWQw9QKHzXVukAuuIJkXkDRwp+Pu5LMIVFi0Fxbav35WURicYr8u1QsoybnQw==,
       }
     dev: true
 
@@ -5224,10 +5224,10 @@ packages:
       }
     dev: true
 
-  /lint-staged@15.0.1:
+  /lint-staged@15.0.2:
     resolution:
       {
-        integrity: sha512-2IU5OWmCaxch0X0+IBF4/v7sutpB+F3qoXbro43pYjQTOo5wumckjxoxn47pQBqqBsCWrD5HnI2uG/zJA7isew==,
+        integrity: sha512-vnEy7pFTHyVuDmCAIFKR5QDO8XLVlPFQQyujQ/STOxe40ICWqJ6knS2wSJ/ffX/Lw0rz83luRDh+ET7toN+rOw==,
       }
     engines: { node: ">=18.12.0" }
     hasBin: true
@@ -5237,19 +5237,19 @@ packages:
       debug: 4.3.4
       execa: 8.0.1
       lilconfig: 2.1.0
-      listr2: 7.0.1
+      listr2: 7.0.2
       micromatch: 4.0.5
       pidtree: 0.6.0
       string-argv: 0.3.2
-      yaml: 2.3.2
+      yaml: 2.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /listr2@7.0.1:
+  /listr2@7.0.2:
     resolution:
       {
-        integrity: sha512-nz+7hwgbDp8eWNoDgzdl4hA/xDSLrNRzPu1TLgOYs6l5Y+Ma6zVWWy9Oyt9TQFONwKoSPoka3H50D3vD5EuNwg==,
+        integrity: sha512-rJysbR9GKIalhTbVL2tYbF2hVyDnrf7pFUZBwjPaMIdadYHmeT+EVi/Bu3qd7ETQPahTotg2WRCatXwRBW554g==,
       }
     engines: { node: ">=16.0.0" }
     dependencies:
@@ -8140,10 +8140,10 @@ packages:
       }
     dev: true
 
-  /yaml@2.3.2:
+  /yaml@2.3.3:
     resolution:
       {
-        integrity: sha512-N/lyzTPaJasoDmfV7YTrYCI0G/3ivm/9wdG0aHuheKowWQwGTsK0Eoiw6utmzAnI6pkJa0DUVygvp3spqqEKXg==,
+        integrity: sha512-zw0VAJxgeZ6+++/su5AFoqBbZbrEakwu+X0M5HmcwUiBL7AzcuPKjj5we4xfQLp78LkEMpD0cOnUhmgOVy3KdQ==,
       }
     engines: { node: ">= 14" }
     dev: true
