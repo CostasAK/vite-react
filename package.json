@@ -7,7 +7,7 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "return 0",
+    "test": "vitest",
     "clean": "pnpm dlx rimraf dist node_modules",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --ignore-unknown --check .",
@@ -32,6 +32,8 @@
     "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^18.0.0",
     "@commitlint/cz-commitlint": "^18.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.5.1",
     "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.14",
     "@vitejs/plugin-react": "^4.1.0",
@@ -40,11 +42,13 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "happy-dom": "^12.9.1",
     "husky": "^8.0.3",
     "imagemin-lint-staged": "^0.5.1",
     "inquirer": "8",
     "lint-staged": "^15.0.2",
     "vite": "^4.5.0",
-    "vite-plugin-svgr": "^4.1.0"
+    "vite-plugin-svgr": "^4.1.0",
+    "vitest": "^0.34.6"
   }
 }

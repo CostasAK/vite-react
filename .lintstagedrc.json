@@ -1,8 +1,8 @@
 {
-  "*.{png,jpeg,jpg,gif,svg}": "pnpm dlx imagemin-lint-staged",
-  "!(*.{js,jsx,ts,tsx,png,jpeg,jpg,gif,svg})": "pnpm dlx prettier --ignore-unknown --write",
+  "*.{png,jpeg,jpg,gif,svg}": "pnpm exec imagemin-lint-staged",
+  "!(*.{js,jsx,ts,tsx,png,jpeg,jpg,gif,svg})": "pnpm exec prettier --ignore-unknown --write",
   "*.{js,jsx,ts,tsx}": [
-    "pnpm dlx prettier --write",
-    "pnpm dlx eslint --report-unused-disable-directives --max-warnings 0 --fix"
+    "pnpm exec prettier --write",
+    "pnpm exec eslint --report-unused-disable-directives --max-warnings 0 --fix"
   ]
 }
