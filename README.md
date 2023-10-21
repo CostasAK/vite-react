@@ -9,8 +9,9 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 - [Contents](#contents)
 - [Usage](#usage)
-  - [Auto-merge Dependabot PRs](#auto-merge-dependabot-prs)
-  - [Main branch protection](#main-branch-protection)
+  - [GitHub Repository Setup](#github-repository-setup)
+    - [Auto-merge Dependabot PRs](#auto-merge-dependabot-prs)
+    - [Main branch protection](#main-branch-protection)
 
 ## Usage
 
@@ -29,7 +30,9 @@ pnpm install
 pnpm start
 ```
 
-### Auto-merge Dependabot PRs
+### GitHub Repository Setup
+
+#### Auto-merge Dependabot PRs
 
 To auto-merge PRs and to allow workflows to be triggered off of them, a PAT is needed with access to the repository and the following permissions:
 
@@ -50,7 +53,7 @@ Once you have the token, set the following:
       - Actions -> New repository secret -> `APPROVAL_TOKEN`
       - Dependabot -> New repository secret -> `APPROVAL_TOKEN`
 
-### Main branch protection
+#### Main branch protection
 
 These settings especially important when using auto-merge for Dependabot PRs.
 
