@@ -12,7 +12,7 @@ updates:
     # assignees:
     #   - "CostasAK"
     commit-message:
-      prefix: "build(npm)"
+      prefix: "build(pnpm)"
     groups:
       minor-updates:
         update-types:
