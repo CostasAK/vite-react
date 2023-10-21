@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "clean": "pnpm dlx rimraf dist node_modules",
+    "clean": "pnpm --silent dlx rimraf dist node_modules",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --ignore-unknown --check .",
     "format-write": "prettier --ignore-unknown --write .",
