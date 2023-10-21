@@ -30,6 +30,8 @@ pnpm install
 pnpm start
 ```
 
+When committing changes, you should use `pnpm commit` instead of `git commit`. `pnpm commit` will help you write better commit messages to pass the commitlint rules.
+
 ### GitHub Repository Setup
 
 #### Auto-merge Dependabot PRs
