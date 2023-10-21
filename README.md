@@ -5,6 +5,13 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Contents
+
+- [Contents](#contents)
+- [Usage](#usage)
+  - [Auto-merge Dependabot PRs](#auto-merge-dependabot-prs)
+  - [Main branch protection](#main-branch-protection)
+
 ## Usage
 
 Install pnpm, if you don't have it installed already
