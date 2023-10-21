@@ -7,14 +7,43 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 ## Setup
 
-### Preventing merging pull requests with failing build
+### Auto-merge Dependabot PRs
 
-1. _Settings_
-   1. _General_ -> _Pull Requests_ -> _Allow auto-merge_
-   2. _Branches_ -> _Branch Protection Rule_
-      1. _Branch name pattern_: `main`
-      2. _Protect matching branches_
-         1. _Require a pull request before merging_
-         2. _Require approvals_
-         3. _Require status checks to pass before merging_ -> _Require branches to be up to date before merging_: `Continuous Integration`
-   3. _Actions_ -> _General_ -> _Workflow permissions_ -> _Allow GitHub Actions to create and approve pull requests_
+To auto-merge PRs and to allow workflows to be triggered off of them, a PAT is needed with access to the repository and the following permissions:
+
+- Repository permissions
+  - Read
+    - Metadata
+  - Read and Write
+    - Code
+    - Pull Requests
+    - Workflows
+
+Once you have the token, set the following:
+
+- Settings
+  - General -> Pull Requests -> Allow auto-merge
+  - Secrets and variables
+    - Set your token in the following 2 places:
+      - Actions -> New repository secret -> `APPROVAL_TOKEN`
+      - Dependabot -> New repository secret -> `APPROVAL_TOKEN`
+
+### Main branch protection
+
+These settings especially important when using auto-merge for Dependabot PRs.
+
+- Settings
+  - Branches -> Branch Protection Rule
+    - Branch name pattern: `main`
+    - Protect matching branches
+      - Require a pull request before merging
+      - Require approvals
+      - Dismiss stale pull request approvals when new commits are pushed
+      - Require review from Code Owners
+      - Require status checks to pass before merging -> Require branches to be up to date before merging:
+        - `test`
+        - `lint`
+        - `format`
+        - `commitlint`
+      - Require conversation resolution before merging
+  - Actions -> General -> Workflow permissions -> Allow GitHub Actions to create and approve pull requests
