@@ -5,6 +5,7 @@ on:
 
 jobs:
   deploy:
+    if: ${{!vars.CLOUDFLARE_PROJECTNAME != ''}}
     runs-on: ubuntu-latest
     permissions:
       contents: read

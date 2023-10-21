@@ -10,33 +10,14 @@ on:
 jobs:
   test:
     uses: ./.github/workflows/test.yml
-  env:
-    needs: test
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - name: "Checkout Repository"
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            env
-      - id: dotenv
-        uses: falti/dotenv-action@v1
-        with:
-          path: env/.env
-    outputs:
-      cloudflare_projectname: ${{steps.dotenv.outputs.cloudflare_projectname || ''}}
   cloudflare:
-    needs: [test, env]
-    if: needs.env.outputs.cloudflare_projectname != ''
+    needs: [test]
     permissions:
       contents: read
       deployments: write
     uses: ./.github/workflows/cloudflare.yml
   gh-pages:
-    needs: [test, env]
-    if: needs.env.outputs.cloudflare_projectname == ''
+    needs: [test]
     permissions:
       contents: read
       deployments: write

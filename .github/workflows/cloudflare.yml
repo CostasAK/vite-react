@@ -7,25 +7,8 @@ on:
   workflow_call:
 
 jobs:
-  env:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - name: "Checkout Repository"
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            env
-      - id: dotenv
-        uses: falti/dotenv-action@v1
-        with:
-          path: env/.env
-    outputs:
-      cloudflare_projectname: ${{steps.dotenv.outputs.cloudflare_projectname || ''}}
   deploy:
-    needs: env
-    if: needs.env.outputs.cloudflare_projectname != ''
+    if: vars.CLOUDFLARE_PROJECTNAME != ''
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -57,6 +40,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ steps.dotenv.outputs.cloudflare_projectname }}
+          projectName: ${{ vars.CLOUDFLARE_PROJECTNAME }}
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
