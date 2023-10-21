@@ -25,10 +25,6 @@ jobs:
         with:
           node-version: "current"
           cache: "pnpm"
-      - id: dotenv
-        uses: falti/dotenv-action@v1
-        with:
-          path: env/.env
       - name: "Install"
         run: pnpm install
       - name: "Build"
