@@ -5,7 +5,22 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Setup
+## Usage
+
+Install pnpm, if you don't have it installed already
+
+```sh
+npm install -g pnpm
+```
+
+Scaffold the project, replacing `my-project` with your desired project name
+
+```sh
+npx degit CostasAK/vite-react#main my-project
+cd my-project
+pnpm install
+pnpm start
+```
 
 ### Auto-merge Dependabot PRs
 
