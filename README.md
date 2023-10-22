@@ -9,6 +9,10 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 - [Contents](#contents)
 - [Usage](#usage)
+  - [Project Setup](#project-setup)
+    - [Metadata](#metadata)
+    - [GitHub Pages](#github-pages)
+    - [Cloudflare Pages](#cloudflare-pages)
   - [GitHub Repository Setup](#github-repository-setup)
     - [Auto-merge Dependabot PRs](#auto-merge-dependabot-prs)
     - [Main branch protection](#main-branch-protection)
@@ -31,6 +35,20 @@ pnpm start
 ```
 
 When committing changes, you should use `pnpm commit` instead of `git commit`. `pnpm commit` will help you write better commit messages to pass the commitlint rules.
+
+### Project Setup
+
+#### Metadata
+
+- [ ] In `env/.env`, set the name and description for your app. These will be used in the HTML meta, openGraph, etc.
+- [ ] In `public/oembed.json`, set the author info. oEmbed is used by Discord to create preview embeds.
+- [ ] Update the `LICENCE` file.
+- [ ] Update the package name in `package.json`.
+- [ ] (Optional) Update `labels.json`. Add old names to aliases, such that labels are updated, instead of removed. If the labels are not automatically updated, manually run the `labels` workflow on `main`.
+
+#### GitHub Pages
+
+#### Cloudflare Pages
 
 ### GitHub Repository Setup
 

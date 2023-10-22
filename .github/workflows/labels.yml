@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  labels:
     name: Github Label Sync
     runs-on: ubuntu-latest
     permissions:
