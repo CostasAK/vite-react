@@ -1,5 +1,4 @@
 {
-  "*.{png,jpeg,jpg,gif,svg}": "pnpm exec imagemin-lint-staged",
   "!(*.{js,jsx,ts,tsx,png,jpeg,jpg,gif,svg})": "pnpm exec prettier --ignore-unknown --write",
   "*.{js,jsx,ts,tsx}": [
     "pnpm exec prettier --write",

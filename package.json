@@ -48,10 +48,11 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "happy-dom": "^12.9.1",
     "husky": "^8.0.3",
-    "imagemin-lint-staged": "^0.5.1",
     "inquirer": "8",
     "lint-staged": "^15.0.2",
+    "svgo": "^3.0.2",
     "vite": "^4.5.0",
+    "vite-plugin-image-optimizer": "^1.1.7",
     "vite-plugin-svgr": "^4.1.0",
     "vitest": "^0.34.6"
   }
