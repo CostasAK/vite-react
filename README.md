@@ -16,6 +16,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
   - [GitHub Repository Setup](#github-repository-setup)
     - [Auto-merge Dependabot PRs](#auto-merge-dependabot-prs)
     - [Main branch protection](#main-branch-protection)
+- [Suggestions](#suggestions)
 
 ## Usage
 
@@ -107,3 +108,19 @@ These settings especially important when using auto-merge for Dependabot PRs.
         - [ ] `format`
         - [ ] `commitlint`
       - [ ] Require conversation resolution before merging
+
+## Suggestions
+
+- [vite-plugin-pwa](https://github.com/antfu/vite-plugin-pwa)
+- Tailwind CSS
+  - [Tailwind CSS Installation](https://tailwindcss.com/docs/installation)
+  - [tailwindcss-webpack-plugin](https://github.com/await-ovo/tailwindcss-webpack-plugin/tree/main/packages/vite-plugin)
+  - [twin.macro](https://github.com/ben-rogerson/twin.macro)
+- [Iconify](https://icon-sets.iconify.design)
+- Images
+  - [vite-plugin-image-presets](https://github.com/ElMassimo/vite-plugin-image-presets)
+  - Alternatively, install `pnpm install -D sharp`. Then remove the test setting from `ViteImageOptimizer()` in `vite.config.js`
+- Fonts
+  - [vite-plugin-webfont-dl](https://github.com/feat-agency/vite-plugin-webfont-dl)
+  - [unplugin-fonts](https://github.com/cssninjaStudio/unplugin-fonts)
+- [awesome-vite](https://github.com/vitejs/awesome-vite)
