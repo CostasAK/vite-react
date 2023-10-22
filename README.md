@@ -29,9 +29,10 @@ npm install -g pnpm
 Scaffold the project, replacing `my-project` with your desired project name
 
 ```sh
-npx degit CostasAK/vite-react#main my-project
+pnpm dlx degit CostasAK/vite-react#main my-project
 cd my-project
 pnpm install
+pnpm prepare
 pnpm start
 ```
 
