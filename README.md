@@ -48,7 +48,20 @@ When committing changes, you should use `pnpm commit` instead of `git commit`. `
 
 #### GitHub Pages
 
+If Cloudflare Pages is not setup, pushes to `main` will automatically trigger a workflow to setup and publish to GitHub Pages.
+
 #### Cloudflare Pages
+
+Setting up the following secrets and variable will cause Cloudflare Pages to be used instead of GitHub Pages. Additionally, pull requests from branches in the repository will also trigger a Cloudflare Pages upload, so they can be previewed.
+
+- Cloudflare Pages project name
+  - [ ] Secrets and variables -> Actions -> Variables -> New repository variable -> `CLOUDFLARE_PROJECTNAME`
+- Cloudflare account ID
+  - [ ] Secrets and variables -> Actions -> New repository variable -> `CLOUDFLARE_ACCOUNT_ID`
+  - [ ] Secrets and variables -> Dependabot -> New repository variable -> `CLOUDFLARE_ACCOUNT_ID`
+- Cloudflare API token
+  - [ ] Secrets and variables -> Actions -> New repository variable -> `CLOUDFLARE_API_TOKEN`
+  - [ ] Secrets and variables -> Dependabot -> New repository variable -> `CLOUDFLARE_API_TOKEN`
 
 ### GitHub Repository Setup
 
@@ -67,13 +80,14 @@ To auto-merge PRs and to allow workflows to be triggered off of them, a PAT is n
 Once you have the token, set the following:
 
 - Settings
-  - General -> Pull Requests -> Allow auto-merge
+  - [ ] General -> Pull Requests -> Allow auto-merge
+  - [ ] Actions -> General -> Workflow permissions -> Allow GitHub Actions to create and approve pull requests
   - Secrets and variables
     - Set your token in the following 2 places:
-      - Actions -> New repository secret -> `APPROVAL_TOKEN`
-      - Dependabot -> New repository secret -> `APPROVAL_TOKEN`
+      - [ ] Actions -> New repository secret -> `APPROVAL_TOKEN`
+      - [ ] Dependabot -> New repository secret -> `APPROVAL_TOKEN`
     - Set the username of the actor of the token:
-      - Actions -> Variables -> New repository variable -> `APPROVAL_ACTOR`
+      - [ ] Actions -> Variables -> New repository variable -> `APPROVAL_ACTOR`
 
 #### Main branch protection
 
@@ -81,16 +95,15 @@ These settings especially important when using auto-merge for Dependabot PRs.
 
 - Settings
   - Branches -> Branch Protection Rule
-    - Branch name pattern: `main`
+    - [ ] Branch name pattern: `main`
     - Protect matching branches
-      - Require a pull request before merging
-      - Require approvals
-      - Dismiss stale pull request approvals when new commits are pushed
-      - Require review from Code Owners
-      - Require status checks to pass before merging -> Require branches to be up to date before merging:
-        - `test`
-        - `lint`
-        - `format`
-        - `commitlint`
-      - Require conversation resolution before merging
-  - Actions -> General -> Workflow permissions -> Allow GitHub Actions to create and approve pull requests
+      - [ ] Require a pull request before merging
+      - [ ] Require approvals
+      - [ ] Dismiss stale pull request approvals when new commits are pushed
+      - [ ] Require review from Code Owners
+      - [ ] Require status checks to pass before merging -> Require branches to be up to date before merging:
+        - [ ] `test`
+        - [ ] `lint`
+        - [ ] `format`
+        - [ ] `commitlint`
+      - [ ] Require conversation resolution before merging
