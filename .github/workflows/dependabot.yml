@@ -14,7 +14,7 @@ jobs:
     uses: ./.github/workflows/test.yml
   format:
     name: Code Formatting
-    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && github.triggering_actor == 'dependabot[bot]' }}
+    if: ${{ vars.APPROVAL_ACTOR != '' && github.event.pull_request.user.login == 'dependabot[bot]' && github.triggering_actor == 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout Repository"
@@ -40,7 +40,7 @@ jobs:
           commit_message: "style(format): write prettier formatting"
   automerge:
     name: Dependabot Auto-Merge
-    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && (github.actor == 'dependabot[bot]' || github.actor == 'CostasAK') }}
+    if: ${{ vars.APPROVAL_ACTOR != '' && github.event.pull_request.user.login == 'dependabot[bot]' && (github.actor == 'dependabot[bot]' || github.actor == vars.APPROVAL_ACTOR) }}
     runs-on: ubuntu-latest
     steps:
       - name: Enable auto-merge for Dependabot PRs
@@ -50,7 +50,7 @@ jobs:
   approve:
     needs: [test]
     name: Dependabot Auto-Approve
-    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && (github.actor == 'dependabot[bot]' || github.actor == 'CostasAK') }}
+    if: ${{ vars.APPROVAL_ACTOR != '' && github.event.pull_request.user.login == 'dependabot[bot]' && (github.actor == 'dependabot[bot]' || github.actor == vars.APPROVAL_ACTOR) }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
