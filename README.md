@@ -114,7 +114,6 @@ These settings especially important when using auto-merge for Dependabot PRs.
 - [vite-plugin-pwa](https://github.com/antfu/vite-plugin-pwa)
 - Tailwind CSS
   - [Tailwind CSS Installation](https://tailwindcss.com/docs/installation)
-  - [tailwindcss-webpack-plugin](https://github.com/await-ovo/tailwindcss-webpack-plugin/tree/main/packages/vite-plugin)
   - [clsx](https://github.com/lukeed/clsx)
   - [twin.macro](https://github.com/ben-rogerson/twin.macro)
 - [Iconify](https://icon-sets.iconify.design)
