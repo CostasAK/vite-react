@@ -54,6 +54,8 @@ Once you have the token, set the following:
     - Set your token in the following 2 places:
       - Actions -> New repository secret -> `APPROVAL_TOKEN`
       - Dependabot -> New repository secret -> `APPROVAL_TOKEN`
+    - Set the username of the actor of the token:
+      - Actions -> Variables -> New repository variable -> `APPROVAL_ACTOR`
 
 #### Main branch protection
 
