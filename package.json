@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^18.0.0",
-    "@commitlint/config-conventional": "^18.0.0",
+    "@commitlint/config-conventional": "^18.1.0",
     "@commitlint/cz-commitlint": "^18.0.0",
     "@iconify/react": "^4.1.1",
     "@svgr/core": "^8.1.0",
