@@ -30,9 +30,9 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.1",
-    "@commitlint/config-conventional": "^18.4.0",
-    "@commitlint/cz-commitlint": "^18.4.1",
+    "@commitlint/cli": "^18.4.2",
+    "@commitlint/config-conventional": "^18.4.2",
+    "@commitlint/cz-commitlint": "^18.4.2",
     "@iconify/react": "^4.1.1",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
@@ -40,7 +40,7 @@
     "@testing-library/user-event": "^14.5.1",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.1.1",
+    "@vitejs/plugin-react": "^4.2.0",
     "commitizen": "^4.3.0",
     "eslint": "^8.53.0",
     "eslint-plugin-react": "^7.33.2",
