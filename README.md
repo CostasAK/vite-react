@@ -42,6 +42,7 @@ When committing changes, you should use `pnpm commit` instead of `git commit`. `
 
 - [ ] Update `.github/CODEOWNERS`
 - [ ] Update `.github/FUNDING.yml`
+- [ ] Update assignee in `.github/dependabot.yml`
 
 #### Metadata
 

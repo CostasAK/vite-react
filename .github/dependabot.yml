@@ -21,5 +21,5 @@ updates:
     labels:
       - "priority: low"
       - "type: dependencies"
-    # reviewers:
-    #   - "CostasAK"
+    reviewers:
+      - "CostasAK"
