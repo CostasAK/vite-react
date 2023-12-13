@@ -5,36 +5,66 @@ on:
     branches:
       - main
     types: [opened, synchronize, reopened, unlocked]
+  pull_request_review:
+    types: [submitted]
 
 env:
   PR_URL: ${{github.event.pull_request.html_url}}
 
 jobs:
+  checkReviews:
+    runs-on: ubuntu-latest
+    outputs:
+      reviews: ${{ steps.reviews.outputs.state }}
   test:
     uses: ./.github/workflows/test.yml
   format:
     name: Code Formatting
+    needs: checkReviews
     if: ${{ vars.APPROVAL_ACTOR != '' && github.event.pull_request.user.login == 'dependabot[bot]' && github.triggering_actor == 'dependabot[bot]' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     steps:
+      - id: reviews
+        env:
+          pr: ${{ github.event.number }}
+        run: |
+          state=$(gh pr view "$pr" \
+              --repo "$GITHUB_REPOSITORY"
+              --json reviewDecision \
+              --jq '.reviewDecision')
+          echo "state=$state" >> "$GITHUB_OUTPUT"
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
       - name: "Checkout Repository"
+        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.reviews.outputs.state == 'APPROVED' }}
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.APPROVAL_TOKEN }}
       - name: pnpm-setup
+        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.reviews.outputs.state == 'APPROVED' }}
         uses: pnpm/action-setup@v2
         with:
           version: 8
       - name: "Setup Node.js"
+        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.reviews.outputs.state == 'APPROVED' }}
         uses: actions/setup-node@v3
         with:
           node-version: "current"
           cache: "pnpm"
       - name: "Install"
+        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.reviews.outputs.state == 'APPROVED' }}
         run: pnpm install
       - name: "Format Write"
+        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.reviews.outputs.state == 'APPROVED' }}
         run: pnpm run format-write
       - name: Commit changes
+        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.reviews.outputs.state == 'APPROVED' }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "style(format): write prettier formatting"
