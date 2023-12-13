@@ -40,6 +40,9 @@ When committing changes, you should use `pnpm commit` instead of `git commit`. `
 
 ### Project Setup
 
+- [ ] Update `.github/CODEOWNERS`
+- [ ] Update `.github/FUNDING.yml`
+
 #### Metadata
 
 - [ ] In `env/.env`, set the name and description for your app. These will be used in the HTML meta, openGraph, etc.
