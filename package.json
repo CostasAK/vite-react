@@ -38,8 +38,8 @@
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.1",
-    "@types/react": "^18.2.45",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.2.1",
     "commitizen": "^4.3.0",
@@ -55,6 +55,6 @@
     "vite": "^5.0.10",
     "vite-plugin-image-optimizer": "^1.1.7",
     "vite-plugin-svgr": "^4.2.0",
-    "vitest": "^1.1.0"
+    "vitest": "^1.1.1"
   }
 }
