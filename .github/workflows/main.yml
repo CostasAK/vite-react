@@ -16,6 +16,7 @@ jobs:
       contents: read
       deployments: write
     uses: ./.github/workflows/cloudflare.yml
+    secrets: inherit
   gh-pages:
     needs: [test]
     permissions:
