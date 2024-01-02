@@ -8,6 +8,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:testing-library/react",
     "prettier",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
@@ -27,5 +28,6 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    "import/named": "off", // throws an error when importing screen from testing-library
   },
 };
