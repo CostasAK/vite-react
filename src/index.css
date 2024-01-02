@@ -1,4 +1,5 @@
 html {
+  box-sizing: content-box;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -7,4 +8,10 @@ html {
 
 * {
   max-width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
