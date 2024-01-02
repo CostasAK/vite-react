@@ -51,7 +51,7 @@ devDependencies:
     version: 8.1.0(@svgr/core@8.1.0)
   "@testing-library/jest-dom":
     specifier: ^6.1.6
-    version: 6.1.6(vitest@1.0.4)
+    version: 6.1.6(vitest@1.1.1)
   "@testing-library/react":
     specifier: ^14.1.2
     version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
@@ -1469,7 +1469,7 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/jest-dom@6.1.6(vitest@1.0.4):
+  /@testing-library/jest-dom@6.1.6(vitest@1.1.1):
     resolution:
       {
         integrity: sha512-YwuiOdYEcxhfC2u5iNKlvg2Q5MgbutovP6drq7J1HrCbvR+G58BbtoCoq+L/kNlrNFsu2Kt3jaFAviLVxYHJZg==,
@@ -1498,7 +1498,7 @@ packages:
       dom-accessibility-api: 0.5.16
       lodash: 4.17.21
       redent: 3.0.0
-      vitest: 1.0.4(@types/node@18.19.3)(happy-dom@12.10.3)
+      vitest: 1.1.1(@types/node@18.19.3)(happy-dom@12.10.3)
     dev: true
 
   /@testing-library/react@14.1.2(react-dom@18.2.0)(react@18.2.0):
