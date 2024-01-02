@@ -2,6 +2,7 @@
   "!(*.{js,jsx,ts,tsx,png,jpeg,jpg,gif,svg})": "pnpm exec prettier --ignore-unknown --write",
   "*.{js,jsx,ts,tsx}": [
     "pnpm exec prettier --write",
-    "pnpm exec eslint --report-unused-disable-directives --max-warnings 0 --fix"
+    "pnpm exec eslint --report-unused-disable-directives --max-warnings 0 --fix",
+    "vitest related --run"
   ]
 }
