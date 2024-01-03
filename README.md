@@ -36,6 +36,8 @@ pnpm prepare
 pnpm start
 ```
 
+Use `#tailwindcss` instead of `#main` to have TailwindCSS included.
+
 When committing changes, you should use `pnpm commit` instead of `git commit`. `pnpm commit` will help you write better commit messages to pass the commitlint rules.
 
 ### Project Setup
