@@ -86,8 +86,8 @@ devDependencies:
     specifier: ^6.2.0
     version: 6.2.0(eslint@8.56.0)(typescript@5.3.3)
   happy-dom:
-    specifier: ^12.10.3
-    version: 12.10.3
+    specifier: ^13.1.4
+    version: 13.1.4
   husky:
     specifier: ^8.0.3
     version: 8.0.3
@@ -114,7 +114,7 @@ devDependencies:
     version: 4.2.0(typescript@5.3.3)(vite@5.0.11)
   vitest:
     specifier: ^1.1.3
-    version: 1.1.3(@types/node@20.10.7)(happy-dom@12.10.3)
+    version: 1.1.3(@types/node@20.10.7)(happy-dom@13.1.4)
 
 packages:
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -1521,7 +1521,7 @@ packages:
       dom-accessibility-api: 0.6.3
       lodash: 4.17.21
       redent: 3.0.0
-      vitest: 1.1.3(@types/node@20.10.7)(happy-dom@12.10.3)
+      vitest: 1.1.3(@types/node@20.10.7)(happy-dom@13.1.4)
     dev: true
 
   /@testing-library/react@14.1.2(react-dom@18.2.0)(react@18.2.0):
@@ -4048,10 +4048,10 @@ packages:
         integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==,
       }
 
-  /happy-dom@12.10.3:
+  /happy-dom@13.1.4:
     resolution:
       {
-        integrity: sha512-JzUXOh0wdNGY54oKng5hliuBkq/+aT1V3YpTM+lrN/GoLQTANZsMaIvmHiHe612rauHvPJnDZkZ+5GZR++1Abg==,
+        integrity: sha512-f8STa4iuJcpXn7YjgqBEemzinyPAdjlHMxlCNbIERdRIjJO9Z9Cj3XW5LuiEhsURFfl0AOWqj0hQitme4gq+Gg==,
       }
     dependencies:
       css.escape: 1.5.1
@@ -7047,7 +7047,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@1.1.3(@types/node@20.10.7)(happy-dom@12.10.3):
+  /vitest@1.1.3(@types/node@20.10.7)(happy-dom@13.1.4):
     resolution:
       {
         integrity: sha512-2l8om1NOkiA90/Y207PsEvJLYygddsOyr81wLQ20Ra8IlLKbyQncWsGZjnbkyG2KwwuTXLQjEPOJuxGMG8qJBQ==,
@@ -7086,7 +7086,7 @@ packages:
       chai: 4.4.0
       debug: 4.3.4
       execa: 8.0.1
-      happy-dom: 12.10.3
+      happy-dom: 13.1.4
       local-pkg: 0.5.0
       magic-string: 0.30.5
       pathe: 1.1.1
