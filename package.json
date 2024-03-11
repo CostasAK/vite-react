@@ -33,7 +33,7 @@
     "react-helmet-async": "^2.0.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.6.1",
+    "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^18.6.2",
     "@commitlint/cz-commitlint": "^18.6.1",
     "@iconify/react": "^4.1.1",
