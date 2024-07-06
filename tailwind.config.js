@@ -1,4 +1,5 @@
 import plugin from "tailwindcss";
+import tailwindcssanimate from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,5 +12,6 @@ export default {
       addVariant("child", "& > *");
       addVariant("all-child", "& *");
     }),
+    tailwindcssanimate,
   ],
 };
