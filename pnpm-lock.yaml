@@ -55,7 +55,7 @@ importers:
         version: 10.3.1
       "@testing-library/jest-dom":
         specifier: ^6.4.6
-        version: 6.4.6(vitest@1.6.0(@types/node@20.14.10)(happy-dom@12.10.3))
+        version: 6.4.6(vitest@1.6.0(@types/node@20.14.10)(happy-dom@14.12.3))
       "@testing-library/react":
         specifier: ^16.0.0
         version: 16.0.0(@testing-library/dom@10.3.1)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -90,8 +90,8 @@ importers:
         specifier: ^6.2.2
         version: 6.2.2(eslint@8.57.0)(typescript@5.4.5)
       happy-dom:
-        specifier: ^12.10.3
-        version: 12.10.3
+        specifier: ^14.12.3
+        version: 14.12.3
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -118,7 +118,7 @@ importers:
         version: 4.2.0(rollup@4.18.0)(typescript@5.4.5)(vite@5.3.3(@types/node@20.14.10))
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.14.10)(happy-dom@12.10.3)
+        version: 1.6.0(@types/node@20.14.10)(happy-dom@14.12.3)
 
 packages:
   "@adobe/css-tools@4.4.0":
@@ -2783,11 +2783,12 @@ packages:
         integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==,
       }
 
-  happy-dom@12.10.3:
+  happy-dom@14.12.3:
     resolution:
       {
-        integrity: sha512-JzUXOh0wdNGY54oKng5hliuBkq/+aT1V3YpTM+lrN/GoLQTANZsMaIvmHiHe612rauHvPJnDZkZ+5GZR++1Abg==,
+        integrity: sha512-vsYlEs3E9gLwA1Hp+w3qzu+RUDFf4VTT8cyKqVICoZ2k7WM++Qyd2LwzyTi5bqMJFiIC/vNpTDYuxdreENRK/g==,
       }
+    engines: { node: ">=16.0.0" }
 
   has-bigints@1.0.2:
     resolution:
@@ -2869,13 +2870,6 @@ packages:
     resolution:
       {
         integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==,
-      }
-    engines: { node: ">=0.10.0" }
-
-  iconv-lite@0.6.3:
-    resolution:
-      {
-        integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==,
       }
     engines: { node: ">=0.10.0" }
 
@@ -4854,13 +4848,6 @@ packages:
       }
     engines: { node: ">=12" }
 
-  whatwg-encoding@2.0.0:
-    resolution:
-      {
-        integrity: sha512-p41ogyeMUrw3jWclHWTQg1k05DSVXPLcVxRTYsXUk+ZooOCZLcoYgPZ/HL/D/N+uQPOtcp1me1WhBEaX02mhWg==,
-      }
-    engines: { node: ">=12" }
-
   whatwg-mimetype@3.0.0:
     resolution:
       {
@@ -5617,7 +5604,7 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  "@testing-library/jest-dom@6.4.6(vitest@1.6.0(@types/node@20.14.10)(happy-dom@12.10.3))":
+  "@testing-library/jest-dom@6.4.6(vitest@1.6.0(@types/node@20.14.10)(happy-dom@14.12.3))":
     dependencies:
       "@adobe/css-tools": 4.4.0
       "@babel/runtime": 7.24.7
@@ -5628,7 +5615,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
     optionalDependencies:
-      vitest: 1.6.0(@types/node@20.14.10)(happy-dom@12.10.3)
+      vitest: 1.6.0(@types/node@20.14.10)(happy-dom@14.12.3)
 
   "@testing-library/react@16.0.0(@testing-library/dom@10.3.1)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)":
     dependencies:
@@ -6869,13 +6856,10 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  happy-dom@12.10.3:
+  happy-dom@14.12.3:
     dependencies:
-      css.escape: 1.5.1
       entities: 4.5.0
-      iconv-lite: 0.6.3
       webidl-conversions: 7.0.0
-      whatwg-encoding: 2.0.0
       whatwg-mimetype: 3.0.0
 
   has-bigints@1.0.2: {}
@@ -6909,10 +6893,6 @@ snapshots:
   husky@8.0.3: {}
 
   iconv-lite@0.4.24:
-    dependencies:
-      safer-buffer: 2.1.2
-
-  iconv-lite@0.6.3:
     dependencies:
       safer-buffer: 2.1.2
 
@@ -8019,7 +7999,7 @@ snapshots:
       "@types/node": 20.14.10
       fsevents: 2.3.3
 
-  vitest@1.6.0(@types/node@20.14.10)(happy-dom@12.10.3):
+  vitest@1.6.0(@types/node@20.14.10)(happy-dom@14.12.3):
     dependencies:
       "@vitest/expect": 1.6.0
       "@vitest/runner": 1.6.0
@@ -8043,7 +8023,7 @@ snapshots:
       why-is-node-running: 2.2.2
     optionalDependencies:
       "@types/node": 20.14.10
-      happy-dom: 12.10.3
+      happy-dom: 14.12.3
     transitivePeerDependencies:
       - less
       - lightningcss
@@ -8058,10 +8038,6 @@ snapshots:
       defaults: 1.0.4
 
   webidl-conversions@7.0.0: {}
-
-  whatwg-encoding@2.0.0:
-    dependencies:
-      iconv-lite: 0.6.3
 
   whatwg-mimetype@3.0.0: {}
 
