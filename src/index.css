@@ -1,17 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
-  box-sizing: content-box;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  max-width: 100%;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+@layer base {
+  * {
+    @apply max-w-full;
+  }
+  *,
+  *::before,
+  *::after {
+    @apply box-content;
+  }
 }
