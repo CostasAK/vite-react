@@ -36,8 +36,6 @@ pnpm prepare
 pnpm start
 ```
 
-Use `#tailwindcss` instead of `#main` to have TailwindCSS included.
-
 When committing changes, you should use `pnpm commit` instead of `git commit`. `pnpm commit` will help you write better commit messages to pass the commitlint rules.
 
 ### Project Setup
@@ -121,10 +119,6 @@ These settings especially important when using auto-merge for Dependabot PRs.
 ## Suggestions
 
 - [vite-plugin-pwa](https://github.com/antfu/vite-plugin-pwa)
-- Tailwind CSS
-  - [Tailwind CSS Installation](https://tailwindcss.com/docs/installation)
-  - [clsx](https://github.com/lukeed/clsx)
-  - [twin.macro](https://github.com/ben-rogerson/twin.macro)
 - [Iconify](https://icon-sets.iconify.design)
 - Images
   - [vite-plugin-image-presets](https://github.com/ElMassimo/vite-plugin-image-presets)
